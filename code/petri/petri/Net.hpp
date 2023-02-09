@@ -1,7 +1,7 @@
 #ifndef PETRI_NET_HPP
 #define PETRI_NET_HPP
 
-#include <petri/Descriptors.hpp>
+#include <Petri/Descriptors.hpp>
 
 #include <boost/graph/adjacency_list.hpp>
 
@@ -20,10 +20,13 @@ struct Net {
 		int id;
 	};
 
+	//NOTE: boost::Vecs selects std::vector, but it needs a type. Which 
+	//NOTE: He just defines these things here, so that he does not have to write all of this stuff again and again. 
 	using GraphType = boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, VProp, int>; //NOTE: Why do you make it bidirectional?
 	using Vertex = boost::graph_traits<GraphType>::vertex_descriptor;
-	using Edge = boost::graph_traits<GraphType>::edge_descriptor;
+	using Edge = boost::graph_traits<GraphType>::edge_descriptor; // Is never used again?
 public:
+	//NOTE: What is it, he wants to use the Range's for?
 	struct PlaceIterator;
 	struct PlaceRange;
 	struct TransitionIterator;
@@ -59,8 +62,8 @@ public: // mutable
 	int addArc(Place p, Transition t, int w);
 	int addArc(Transition t, Place p, int w);
 private:
-	static Place makePlace(int i);
-	static Transition makeTransition(int i);
+	static Place makePlace(int i); //NOTE: What are these used for?
+	static Transition makeTransition(int i); //NOTE: What are these used for?
 private:
 	GraphType g;
 	int maxInWeight = 0; //NOTE???
