@@ -21,8 +21,7 @@ struct Net {
 	};
 
 	//NOTE: boost::Vecs selects std::vector, but it needs a type. Which 
-	//NOTE: He just defines these things here, so that he does not have to write all of this stuff again and again. 
-	using GraphType = boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, VProp, int>; //NOTE: Why do you make it bidirectional?
+	using GraphType = boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, VProp, int>;
 	using Vertex = boost::graph_traits<GraphType>::vertex_descriptor;
 	using Edge = boost::graph_traits<GraphType>::edge_descriptor; // Is never used again?
 public:
@@ -362,11 +361,14 @@ inline int Net::addArc(Transition t, Place p, int w) {
 	assert(p);
 	assert(static_cast<std::size_t> (p.getId()) < places_.size());
 	assert(w >= 0);
+	
 	Vertex vt = transitions_[t.getId()];
 	Vertex vp = places_[p.getId()];
 	assert(g[vp].kind == Kind::Place);
 	assert(g[vt].kind == Kind::Transition);
+	
 	auto ep = edge(vt, vp, g);
+
 	if(ep.second) return g[ep.first] += w;
 	else {
 		add_edge(vt, vp, w, g);

@@ -4,8 +4,20 @@
 #include <boost/graph/depth_first_search.hpp>
 #include <boost/array.hpp>
 int main(){
- 
-    boost::adjacency_list<boost::vecS,boost::vecS,boost::directedS,boost::no_property,boost::no_property> g;
+ 	  enum class Kind {
+		  Place = 0, Transition = 1 //Made it more expicit. 
+	  };
+
+	  struct VProp {
+		  Kind kind;
+		  int id;
+	  };
+
+	  //NOTE: boost::Vecs selects std::vector, but it needs a type. Which 
+	  //NOTE: He just defines these things here, so that he does not have to write all of this stuff again and again. 
+	  using GraphType = boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, VProp, int>; //NOTE: Why do you make it bidirectional?
+
+    GraphType g;
 
     boost::adjacency_list<>::vertex_descriptor v1 = add_vertex(g);
     boost::adjacency_list<>::vertex_descriptor v2 = add_vertex(g);
@@ -25,7 +37,9 @@ int main(){
     add_edge(v4,v5,g);
 
     add_edge(6,7,g); // add_edge can create the vertices themselves, if they do not already exist. 
-
+    
+    std::cout << g[v1].id << "\n";
+    /*
     std::pair<boost::adjacency_list<>::edge_iterator,boost::adjacency_list<>::edge_iterator> edge_it = edges(g);
 
     std::copy(edge_it.first, edge_it.second,
@@ -50,7 +64,7 @@ int main(){
       std::cout << *it << "\n"; 
     }
 
-  
+    */
 }
 
 
