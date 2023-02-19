@@ -1,0 +1,24 @@
+digraph G{
+    label="Example"
+
+    node [shape = "box"
+          color = "lightblue"
+          style = "filled",
+          fixedsize=True]
+    
+    0 [shape=circle,label="p0:10",color=lightgreen,style=filled,fixedsize=True]
+
+    1 
+
+    2 
+    
+    3 [shape=circle,label="p1:1",color=lightgreen,style=filled,fixedsize=True]
+
+    4
+
+
+    0 -> 1 [headlabel="2",labelfontcolor=orange,labeldistance=2]
+    2 -> 3 [headlabel="1",labelfontcolor=orange,labeldistance=2]
+    4-> 0 [headlabel="1",labelfontcolor=orange,labeldistance=2]
+    0-> 2 [headlabel="1",labelfontcolor=orange,labeldistance=2]
+}

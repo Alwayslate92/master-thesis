@@ -67,7 +67,7 @@ private:
 	GraphType g;
 	int maxInWeight = 0; //NOTE???
 	std::vector<Vertex> places_, transitions_;
-	std::vector<std::vector<Vertex>> candDisable, candEnable; //NOTE???
+	std::vector<std::vector<Vertex>> candDisable, candEnable; 
 };
 
 //==============================================================================
@@ -347,7 +347,7 @@ inline int Net::addArc(Place p, Transition t, int w) {
 	if(ep.second) {
 		int weight = g[ep.first] += w;
 		if(weight > maxInWeight) maxInWeight = weight;
-		return weight; //NOTE: Here we dont add an edge?
+		return weight; 
 	} else {
 		add_edge(vp, vt, w, g);
 		if(w > maxInWeight) maxInWeight = w;
