@@ -6,7 +6,7 @@
 
 namespace petri {
 
-//NOTE: ???
+
 Marking::Marking(const Net &net) : net(net) {
 	counts.resize(net.numPlaces(), 0);
 	transitions.resize(net.numTransitions());

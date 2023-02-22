@@ -286,14 +286,12 @@ inline const Net::GraphType &Net::getGraph() const {
 	return g;
 }
 
-//NOTE: I dont get this. You have a transition, and then you return that same transition?
 inline Net::Vertex Net::vertexFromTransition(Transition t) const {
 	assert(t);
 	assert(static_cast<std::size_t> (t.getId()) < transitions_.size());
 	return transitions_[t.getId()];
 }
 
-//NOTE: I dont get this. You have a place, and then you return that same place?
 inline Net::Vertex Net::vertexFromPlace(Place p) const {
 	assert(p);
 	assert(static_cast<std::size_t> (p.getId()) < places_.size());
@@ -309,7 +307,6 @@ inline int Net::getMaxInWeight() const {
 	return maxInWeight;
 }
 
-//NOTE: Why this decoupeling between what is stored, the vertex and what is returned a place. 
 inline Place Net::addPlace() {
 	const int id = places_.size();
 	Vertex v = add_vertex({Kind::Place, id}, g);
@@ -318,7 +315,6 @@ inline Place Net::addPlace() {
 	return Place(id);
 }
 
-//NOTE: Why this decoupeling between what is stored, the vertex and what is returned a transition. 
 inline Transition Net::addTransition() {
 	const int id = transitions_.size();
 	Vertex v = add_vertex({Kind::Transition, id}, g);

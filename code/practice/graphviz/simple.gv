@@ -16,9 +16,9 @@ digraph G{
 
     4
 
-
     0 -> 1 [headlabel="2",labelfontcolor=orange,labeldistance=2]
     2 -> 3 [headlabel="1",labelfontcolor=orange,labeldistance=2]
     4-> 0 [headlabel="1",labelfontcolor=orange,labeldistance=2]
     0-> 2 [headlabel="1",labelfontcolor=orange,labeldistance=2]
+    0-> 6 [headlabel="1",labelfontcolor=orange,labeldistance=2]
 }
