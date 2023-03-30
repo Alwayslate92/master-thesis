@@ -65,7 +65,7 @@ private:
 	void updateToDisabled(Net::Vertex vp);
 	void disableAll(Net::Vertex vp);
 private:
-	struct Trans { //NOTE::???
+	struct Trans { 
 		bool enabled = false;
 		int next = -1, prev = -1;
 	};

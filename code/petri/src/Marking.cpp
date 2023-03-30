@@ -73,8 +73,8 @@ bool Marking::isEnabledNoCache(Net::Vertex vt) const {
 void Marking::fire(Transition t) {
 	assert(t);
 	assert(isEnabledNoCache(t));
-	const auto &g = net.getGraph(); //NOTE: Where does it get net from?
-	const auto vt = net.vertexFromTransition(t); //NOTE: Where does it get net from?
+	const auto &g = net.getGraph(); 
+	const auto vt = net.vertexFromTransition(t); 
 	for(const auto eIn : jla_boost::asRange(in_edges(vt, g))) {
 		const int weight = g[eIn];
 		const auto pvIn = source(eIn, g);

@@ -74,7 +74,6 @@ public:
 		return a.id < b.id;
 	}
 
-	//This is just a function.
 	friend std::size_t hash_value(Transition t) {
 		return t.id;
 	}
@@ -84,7 +83,6 @@ private:
 
 } // namespace petri
 
-//NOTE: Ask Jakob why he is overloading std, is this not ill advised?
 namespace std {
 
 template<>

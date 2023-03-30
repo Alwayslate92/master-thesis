@@ -1,0 +1,48 @@
+/*
+I assume no omega markings, and no circles (for now circles should be added later). 
+
+seen_markings: Used to give the user an overview, of what markings are reachable. 
+But they cannot se how from just seen_marking.
+
+paths_in_network = [path]
+path: a list of tuples, where first is the current marking, and the second is the 
+transition t that was fired to reach this marking from the previous one. The first
+entry is the initial marking, and a "empty transition". 
+
+//ASK: 
+Problemet med paths_in_network som lister: 
+Efter vi har fired en gang, og hvis vi har mere end en enabled transition, så skal
+vi kunne splitte vores path op. Jeg bliver vel nød til, at lave en form for graph?
+*/
+
+
+state_space_generation(M0,net):
+    store M0 in seen_markings
+    all_perm_t = compute all permutations of enabled_transitions
+    paths_in_network = [(M0, t_empty),(M0, t_empty),...,(M0, t_empty)]
+    generate(M0,net,all_perm_t,paths_in_network)
+
+generate(M,net,all_perm_t,paths_in_network):
+    for i = 0 to all_perm_t.size():
+        marking =  fire t[i]
+
+        if marking is not in seen_marking:
+                add it to seen_markings
+
+        if enabled_transitions is not empty:
+            all_per_t = compute all permutations of enabled_transitions
+            generate(marking,net,all_perm_t,paths_in_network) //Should be a copy of the current net.    
+        
+        //ASK: Siden at jeg skal lave kopier af nettet, vil det ikke være bedre, hvis marking og enabled transitions ikke var en del af nettet?
+        /*Hvis jeg gør det, behøver jeg ikke kopier hele nettet. Men kun nettets 
+        marking og enabled transition? Jeg skal bruge en kopi af marking og state_of_transitions
+        med mig hver gang jeg kalder generate. Men fordi de er sat sammen med graphen, skal 
+        jeg kopier hele grafen hver gang.  
+        */
+        return;
+
+    [ [([1,0],t_0)], [([1,0],t_0)] ]
+
+fire t_0 
+
+[ [([1,0],t_0), ([0,1],t_0)], [([1,0],t_0)] ]

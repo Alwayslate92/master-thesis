@@ -219,7 +219,7 @@ void Net::printDot(std::ostream &s, const Marking &marking) const {
 	MOD_PETRINET_TRY
 		using pnapi::io::operator<<;
 		setMarking(marking);
-		s << pnapi::io::dot << p->net;
+		s << pnapi::io::dot << p->net; //ASK: Where does this p come from?
 	MOD_PETRINET_CATCH
 #else
 	MOD_NO_PNAPI_ERROR;
@@ -231,7 +231,7 @@ void Net::printLola(std::ostream &s, const Marking &marking) const {
 	MOD_PETRINET_TRY
 		using pnapi::io::operator<<;
 		setMarking(marking);
-		s << pnapi::io::lola << p->net;
+		s << pnapi::io::lola << p->net; //ASK: Where does this p come from?
 	MOD_PETRINET_CATCH
 #else
 	MOD_NO_PNAPI_ERROR;

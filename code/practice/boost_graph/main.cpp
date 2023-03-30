@@ -18,7 +18,7 @@ int main(){
 	  //NOTE: boost::Vecs selects std::vector, but it needs a type. Which 
 	  //NOTE: He just defines these things here, so that he does not have to write all of this stuff again and again. 
     using EdgeProperty = boost::property<boost::edge_weight_t, int>;
-	  using GraphType = boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, VProp, EdgeProperty>; //NOTE: Why do you make it bidirectional?
+	  using GraphType = boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, VProp, EdgeProperty>;
 
     GraphType g;
 
