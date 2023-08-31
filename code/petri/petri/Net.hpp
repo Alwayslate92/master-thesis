@@ -20,12 +20,11 @@ struct Net {
 		int id;
 	};
 
-	//NOTE: boost::Vecs selects std::vector, but it needs a type. Which 
+	 
 	using GraphType = boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, VProp, int>;
 	using Vertex = boost::graph_traits<GraphType>::vertex_descriptor;
-	using Edge = boost::graph_traits<GraphType>::edge_descriptor; // Is never used again?
+	using Edge = boost::graph_traits<GraphType>::edge_descriptor; 
 public:
-	//NOTE: What is it, he wants to use the Range's for?
 	struct PlaceIterator;
 	struct PlaceRange;
 	struct TransitionIterator;
@@ -61,11 +60,11 @@ public: // mutable
 	int addArc(Place p, Transition t, int w);
 	int addArc(Transition t, Place p, int w);
 private:
-	static Place makePlace(int i); //NOTE: What are these used for?
-	static Transition makeTransition(int i); //NOTE: What are these used for?
+	static Place makePlace(int i); 
+	static Transition makeTransition(int i);
 private:
 	GraphType g;
-	int maxInWeight = 0; //NOTE???
+	int maxInWeight = 0; 
 	std::vector<Vertex> places_, transitions_;
 	std::vector<std::vector<Vertex>> candDisable, candEnable; 
 };
